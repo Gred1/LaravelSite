@@ -8,11 +8,6 @@
     <title>Document</title>
 </head>
 <body>
-<form action="{{route('store')}}">
-    <input type="text" name="age">
-    <br>
-    <br>
-    <button name="sds">Send</button>
-</form>
+    <h1>Title</h1>
 </body>
 </html>

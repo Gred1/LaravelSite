@@ -10,8 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-use App\Http\Middleware\CheckAge;
 
-Route::get('/', 'AgeController@home')->name('index');
-Route::post('/store', 'AgeController@store')->name('store')->middleware(CheckAge::class);
-Route::get('/luck', 'AgeController@luck')->name('luck');
+Route::get('/', function(){
+    return view('welcome');
+});
+
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth']], function(){
+    Route::get('/', 'DashboardController@dashboard')->name('admin.index');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
